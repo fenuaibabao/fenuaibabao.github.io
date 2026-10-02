@@ -78,6 +78,10 @@ p{margin:0;max-width:38rem}
 .email{font:500 1.15rem/1.3 var(--mono);user-select:all;word-break:break-all}
 #copied{font:500 .8rem var(--mono);color:var(--accent-2)}
 
+.social{display:flex;gap:.6rem;flex-wrap:wrap}
+.social a{display:inline-flex;align-items:center;gap:.5rem;padding:.6rem .95rem;border:1px solid var(--line);border-radius:999px;background:var(--surface);text-decoration:none;font:500 .9rem/1 var(--body)}
+.social a:hover{border-color:var(--accent);color:var(--accent)}
+.social svg{width:1.05rem;height:1.05rem;fill:none;stroke:currentColor;stroke-width:1.8}
 footer{font:400 .8rem/1.5 var(--mono);color:var(--muted);border-top:1px solid var(--line);padding-top:1.5rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
 
 @media (max-width:30rem){.setlist li{grid-template-columns:1fr}.meta{grid-column:1;grid-row:auto;text-align:left}}
@@ -139,6 +143,10 @@ footer{font:400 .8rem/1.5 var(--mono);color:var(--muted);border-top:1px solid va
       <span class="email" id="email">fenua@fenuaibabao.com</span>
       <button class="btn" type="button" id="copy">Copy</button>
       <span id="copied" aria-live="polite"></span>
+    </div>
+    <div class="social" aria-label="Social links">
+      <a href="https://www.instagram.com/fenuaibabao/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.6" fill="currentColor"/></svg>Instagram · @fenuaibabao</a>
+      <a href="https://cash.app/$misterfenua" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><path d="M14.5 9.2c-.6-.6-1.5-.9-2.5-.9-1.4 0-2.4.7-2.4 1.7 0 2.4 5 1.3 5 3.9 0 1.1-1.1 1.8-2.6 1.8-1.1 0-2.1-.4-2.8-1.1M12 6.8v1.5M12 15.5V17"/></svg>Tip the DJ · $misterfenua</a>
     </div>
   </section>
 
