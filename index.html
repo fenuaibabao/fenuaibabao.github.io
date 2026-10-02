@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Fenua Ibabao</title>
+<meta name="description" content="Fenua Ibabao, also known as Endaoism. Afrobeats and Amapiano DJ, music maker and builder of small useful apps.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;800&family=Figtree:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one narrow column like a DJ's set list; hero is a "now playing" deck, sections read as tracks with BPM/key metadata */
+:root{
+  --bg:#f6f2ea; --surface:#fffdf8; --fg:#1d1a24; --muted:#5f5868; --line:#e2dbcf;
+  --accent:#b8560f; --accent-2:#2f6b4f; --accent-ink:#fffdf8;
+  --display:"Unbounded", "Arial Black", system-ui, sans-serif;
+  --body:"Figtree", "Segoe UI", system-ui, sans-serif;
+  --mono:"JetBrains Mono", ui-monospace, Menlo, monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#15121b; --surface:#1e1a26; --fg:#f2ece2; --muted:#a79fb0; --line:#2f2938;
+  --accent:#f0a13a; --accent-2:#6fc49a; --accent-ink:#15121b; color-scheme:dark }}
+:root[data-theme="dark"]{
+  --bg:#15121b; --surface:#1e1a26; --fg:#f2ece2; --muted:#a79fb0; --line:#2f2938;
+  --accent:#f0a13a; --accent-2:#6fc49a; --accent-ink:#15121b; color-scheme:dark }
+
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:400 1.0625rem/1.65 var(--body);-webkit-font-smoothing:antialiased}
+.wrap{max-width:46rem;margin:0 auto;padding-inline:1.25rem;padding-block:3rem 4rem;display:flex;flex-direction:column;gap:4rem}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+
+/* hero */
+.hero{display:flex;flex-direction:column;gap:1.25rem}
+.eyebrow{font:500 .75rem/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.live{width:.55rem;height:.55rem;border-radius:50%;background:var(--accent);box-shadow:0 0 0 0 var(--accent);animation:pulse 2.2s ease-out infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--accent) 55%,transparent)}100%{box-shadow:0 0 0 .7rem transparent}}
+h1{font:800 clamp(2.6rem,9vw,4.6rem)/.95 var(--display);letter-spacing:-.03em;margin:0;text-wrap:balance}
+h1 .aka{display:block;font-weight:500;font-size:.38em;letter-spacing:0;margin-top:.9rem;color:var(--accent)}
+.lede{font-size:1.2rem;max-width:36rem;margin:0;color:var(--fg)}
+.lede em{font-style:normal;color:var(--accent-2);font-weight:600}
+
+/* waveform */
+.wave{display:flex;align-items:flex-end;gap:3px;height:3.2rem;margin-top:.5rem}
+.wave span{flex:1;min-width:2px;background:var(--accent);border-radius:2px;opacity:.85;transform-origin:bottom;animation:bounce 1.4s ease-in-out infinite}
+.wave span:nth-child(3n){background:var(--accent-2)}
+@keyframes bounce{50%{transform:scaleY(.45)}}
+
+.actions{display:flex;gap:.75rem;flex-wrap:wrap;margin-top:.5rem}
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.75rem 1.15rem;border-radius:999px;font:600 .95rem/1 var(--body);text-decoration:none;border:1.5px solid var(--fg);background:transparent;color:var(--fg);cursor:pointer}
+.btn.primary{background:var(--fg);color:var(--bg)}
+.btn:hover{border-color:var(--accent);color:var(--accent)}
+.btn.primary:hover{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+
+/* sections */
+section{display:flex;flex-direction:column;gap:1.25rem}
+h2{font:700 1.5rem/1.1 var(--display);margin:0;letter-spacing:-.01em;display:flex;align-items:baseline;gap:.75rem;flex-wrap:wrap}
+h2 small{font:500 .72rem/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+p{margin:0;max-width:38rem}
+.muted{color:var(--muted)}
+
+/* set list */
+.setlist{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.setlist li{display:grid;grid-template-columns:1fr auto;gap:.25rem 1rem;padding:1rem 0;border-bottom:1px solid var(--line);align-items:baseline}
+.setlist .t{font-weight:600;font-size:1.1rem;min-width:0}
+.setlist .g{color:var(--muted);font-size:.95rem;grid-column:1}
+.meta{font:500 .8rem/1.4 var(--mono);color:var(--muted);text-align:right;font-variant-numeric:tabular-nums;grid-row:1 / span 2;grid-column:2;white-space:nowrap}
+.meta b{color:var(--fg);font-weight:500}
+
+.chips{display:flex;gap:.5rem;flex-wrap:wrap}
+.chip{font:500 .8rem/1 var(--mono);padding:.45rem .7rem;border:1px solid var(--line);border-radius:999px;color:var(--muted);background:var(--surface)}
+
+.build{background:var(--surface);border:1px solid var(--line);border-radius:1rem;padding:1.5rem;display:flex;flex-direction:column;gap:.75rem}
+.status{align-self:flex-start;font:500 .72rem/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;padding:.4rem .6rem;border-radius:.4rem;background:color-mix(in srgb,var(--accent-2) 16%,transparent);color:var(--accent-2)}
+
+.contact{display:flex;gap:.75rem;align-items:center;flex-wrap:wrap}
+.email{font:500 1.15rem/1.3 var(--mono);user-select:all;word-break:break-all}
+#copied{font:500 .8rem var(--mono);color:var(--accent-2)}
+
+footer{font:400 .8rem/1.5 var(--mono);color:var(--muted);border-top:1px solid var(--line);padding-top:1.5rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+
+@media (max-width:30rem){.setlist li{grid-template-columns:1fr}.meta{grid-column:1;grid-row:auto;text-align:left}}
+@media (prefers-reduced-motion:reduce){.live,.wave span{animation:none}}
+</style>
+
+</head>
+<body>
+<main class="wrap">
+  <header class="hero">
+    <div class="eyebrow"><span class="live" aria-hidden="true"></span>DJ · Producer · Builder</div>
+    <h1>Fenua Ibabao<span class="aka">aka Endaoism</span></h1>
+    <p class="lede">I mix <em>Afrobeats</em> and <em>Amapiano</em>, make original music, and build small apps that solve real problems.</p>
+    <div class="wave" aria-hidden="true" id="wave"></div>
+    <div class="actions">
+      <a class="btn primary" href="#music">Listen to the mixes</a>
+      <a class="btn" href="#contact">Get in touch</a>
+    </div>
+  </header>
+
+  <section id="music" aria-labelledby="music-h">
+    <h2 id="music-h">Afrobeats With Love <small>YouTube · DJ mixes</small></h2>
+    <p>Long-form mixes for cooking, driving and vibing. Each set is built track by track, blended in key, and published with chapters so you can jump to any song.</p>
+    <ol class="setlist">
+      <li><span class="t">Afrobeats With Love</span><span class="g">Afrobeats</span><span class="meta"><b>54</b> tracks<br>~100–110 BPM</span></li>
+      <li><span class="t">Chillest Amapiano For Vibing</span><span class="g">Amapiano</span><span class="meta"><b>26</b> tracks<br>~112–115 BPM</span></li>
+      <li><span class="t">Amagrande</span><span class="g">Amapiano</span><span class="meta"><b>New</b><br>~112–115 BPM</span></li>
+    </ol>
+    <div class="actions">
+      <a class="btn primary" href="https://www.youtube.com/@endaoism" target="_blank" rel="noopener">Watch on YouTube · @endaoism</a>
+    </div>
+  </section>
+
+  <section aria-labelledby="craft-h">
+    <h2 id="craft-h">How a mix gets made <small>The workflow</small></h2>
+    <p class="muted">Every set starts as a playlist and ends as a chaptered video. Transitions are planned with the Camelot wheel so keys sit together.</p>
+    <div class="chips">
+      <span class="chip">Playlist curation</span>
+      <span class="chip">Key matching · Camelot</span>
+      <span class="chip">Mixing in DJ.Studio</span>
+      <span class="chip">48 kHz WAV master</span>
+      <span class="chip">Edit in DaVinci Resolve</span>
+      <span class="chip">Chapters + thumbnail</span>
+    </div>
+  </section>
+
+  <section aria-labelledby="build-h">
+    <h2 id="build-h">What I'm building <small>Apps</small></h2>
+    <div class="build">
+      <span class="status">In progress</span>
+      <p><strong>AI room makeovers.</strong> Snap a photo of a room and see it restyled before you buy a thing. Made for people who just moved, plus hosts and realtors staging a space. One-time passes instead of a subscription you forget about.</p>
+    </div>
+  </section>
+
+  <section id="contact" aria-labelledby="contact-h">
+    <h2 id="contact-h">Contact <small>Bookings · collabs · hello</small></h2>
+    <p>For DJ bookings, collaborations or anything else, email me.</p>
+    <div class="contact">
+      <span class="email" id="email">fenua@fenuaibabao.com</span>
+      <button class="btn" type="button" id="copy">Copy</button>
+      <span id="copied" aria-live="polite"></span>
+    </div>
+  </section>
+
+  <footer><span>© 2026 Fenua Ibabao</span><span>fenuaibabao.com</span></footer>
+</main>
+
+<script>
+(function(){
+  var w=document.getElementById('wave'),n=48;
+  for(var i=0;i<n;i++){var s=document.createElement('span');
+    var h=30+60*Math.abs(Math.sin(i*0.55))*(0.6+0.4*Math.abs(Math.cos(i*0.21)));
+    s.style.height=h+'%';s.style.animationDelay=(-(i%12)*0.11)+'s';w.appendChild(s);}
+  var b=document.getElementById('copy'),o=document.getElementById('copied'),e=document.getElementById('email');
+  b.addEventListener('click',function(){
+    var t=e.textContent;
+    function sel(){var r=document.createRange();r.selectNodeContents(e);var s=getSelection();s.removeAllRanges();s.addRange(r);o.textContent='Selected. Press Cmd+C to copy.';}
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(function(){o.textContent='Copied';},sel);}else sel();
+  });
+})();
+</script>
+</body>
+</html>
