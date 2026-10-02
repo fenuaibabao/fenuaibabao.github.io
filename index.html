@@ -82,6 +82,12 @@ p{margin:0;max-width:38rem}
 .social a{display:inline-flex;align-items:center;gap:.5rem;padding:.6rem .95rem;border:1px solid var(--line);border-radius:999px;background:var(--surface);text-decoration:none;font:500 .9rem/1 var(--body)}
 .social a:hover{border-color:var(--accent);color:var(--accent)}
 .social svg{width:1.05rem;height:1.05rem;fill:none;stroke:currentColor;stroke-width:1.8}
+.art{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.75rem}
+.art figure{margin:0;background:#fff;border:1px solid var(--line);border-radius:.75rem;padding:.9rem;display:flex;align-items:center;justify-content:center}
+.art figure.tall{grid-row:span 2}
+.art figure.wide{grid-column:1 / -1}
+.art img{display:block;width:100%;height:auto;max-height:100%;object-fit:contain}
+@media (max-width:36rem){.art{grid-template-columns:repeat(2,minmax(0,1fr))}}
 footer{font:400 .8rem/1.5 var(--mono);color:var(--muted);border-top:1px solid var(--line);padding-top:1.5rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
 
 @media (max-width:30rem){.setlist li{grid-template-columns:1fr}.meta{grid-column:1;grid-row:auto;text-align:left}}
@@ -98,6 +104,7 @@ footer{font:400 .8rem/1.5 var(--mono);color:var(--muted);border-top:1px solid va
     <div class="wave" aria-hidden="true" id="wave"></div>
     <div class="actions">
       <a class="btn primary" href="#music">Listen to the mixes</a>
+      <a class="btn" href="#art">See the art</a>
       <a class="btn" href="#contact">Get in touch</a>
     </div>
   </header>
@@ -125,6 +132,19 @@ footer{font:400 .8rem/1.5 var(--mono);color:var(--muted);border-top:1px solid va
       <span class="chip">48 kHz WAV master</span>
       <span class="chip">Edit in DaVinci Resolve</span>
       <span class="chip">Chapters + thumbnail</span>
+    </div>
+  </section>
+
+  <section id="art" aria-labelledby="art-h">
+    <h2 id="art-h">Batok-inspired art <small>Original designs</small></h2>
+    <p>Geometric designs I draw by hand, inspired by batok, the traditional tattoo art of the Philippines: chevrons, diamonds, hexagons and repeating bands.</p>
+    <div class="art">
+      <figure class="wide"><img src="art-hex-band.png" alt="Horizontal band of four hexagons with striped panels, diamonds and arrowheads" width="960" height="267" loading="lazy"></figure>
+      <figure class="tall"><img src="art-chevron-band.png" alt="Vertical chevron band in black, red and blue with diamond and leaf motifs" width="420" height="839" loading="lazy"></figure>
+      <figure><img src="art-hexagon.png" alt="Hexagon design with striped panels and a central diamond" width="560" height="473" loading="lazy"></figure>
+      <figure><img src="art-diamond.png" alt="Diamond medallion with stepped borders and spiral motifs" width="560" height="560" loading="lazy"></figure>
+      <figure><img src="art-triangle.png" alt="Triangle design framing a hexagon, with feather and comb marks" width="544" height="560" loading="lazy"></figure>
+      <figure><img src="art-compass.png" alt="Four-point compass motif with fine linework" width="426" height="427" loading="lazy"></figure>
     </div>
   </section>
 
